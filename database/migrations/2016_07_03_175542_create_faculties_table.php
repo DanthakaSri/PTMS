@@ -1,33 +1,35 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
-class CreateFacultiesTable extends Migration {
+class CreateFacultiesTable extends Migration
+{
 
-	/**
-	 * Run the migrations.
-	 *
-	 * @return void
-	 */
-	public function up()
-	{
-		Schema::create('faculties', function(Blueprint $table)
-		{
-			$table->increments('id');
-			$table->string('name');
-			$table->timestamps();
-		});
-	}
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('faculties', function (Blueprint $table)
+        {
+            $table->increments('id');
+            $table->string('faculty_id')->unique();
+            $table->string('name');
+            $table->timestamps();
+        });
+    }
 
-	/**
-	 * Reverse the migrations.
-	 *
-	 * @return void
-	 */
-	public function down()
-	{
-		Schema::drop('faculties');
-	}
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::drop('faculties');
+    }
 
 }

@@ -17,4 +17,9 @@ class Faculty extends Model
         return $this->hasMany('App/Hall');
     }
 
+    public function lecturer()
+    {
+        return $this->hasMany('App/Lecturer');
+    }
+
 }
