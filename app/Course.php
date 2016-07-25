@@ -5,7 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 class Course extends Model
 {
 
-    protected $fillable = ['course_id','name', 'faculty_id', 'lecturer_id'];
+    protected $fillable = ['course_id', 'name', 'faculty_id', 'lecturer_id'];
 
 
     public function faculty()
@@ -24,6 +24,10 @@ class Course extends Model
         return $this->hasMany('App/Student');
     }
 
+    public function timetable()
+    {
+        return $this->hasMany('App/Timetable');
+    }
 
 
 }

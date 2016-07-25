@@ -22,4 +22,9 @@ class Faculty extends Model
         return $this->hasMany('App/Lecturer');
     }
 
+    public function timetable()
+    {
+        return $this->hasMany('App/Timetable');
+    }
+
 }
