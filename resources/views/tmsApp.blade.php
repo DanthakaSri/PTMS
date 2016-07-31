@@ -47,7 +47,7 @@
 
             <ul class="nav">
                 <li class="active">
-                    <a href="dashboard.html">
+                    <a href="{{ url('/home') }}">
                         <i class="ti-pie-chart"></i>
                         <p>Dashboard</p>
                     </a>
@@ -94,8 +94,8 @@
                                 <b class="caret"></b>
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a href="#"><i class="fa fa-pencil-square-o"></i> Edit Profile</a></li>
-                                <li><a href="#"><i class="fa fa-sign-out"></i> Logout</a></li>
+                                <li><a href="/user/{{ Auth::user()->id }}/edit"><i class="fa fa-pencil-square-o"></i> Edit Profile</a></li>
+                                <li><a href="{{ url('/auth/logout') }}"><i class="fa fa-sign-out"></i> Logout</a></li>
                             </ul>
                         </li>
 
