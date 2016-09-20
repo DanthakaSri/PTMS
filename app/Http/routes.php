@@ -20,7 +20,7 @@ Route::resource('course', 'CourseController');
 Route::resource('faculty', 'FacultyController');
 Route::resource('hall', 'HallController');
 Route::resource('lecturer', 'LecturerController');
-Route::resource('student', 'StudentController');
+//Route::resource('student', 'StudentController');
 Route::resource('subject', 'SubjectController');
 Route::resource('timetable', 'TimetableController');
 
