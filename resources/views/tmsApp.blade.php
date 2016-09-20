@@ -81,10 +81,10 @@
                                         class="sidebar-mini-hide">Hall</span></a>
                             <ul>
                                 <li>
-                                    <a href="base_comp_images.html">Add Hall</a>
+                                    <a href="{{ url('/hall/create') }}">Add Hall</a>
                                 </li>
                                 <li>
-                                    <a href="base_comp_images.html">Update Hall</a>
+                                    <a href="#">Update Hall</a>
                                 </li>
                                 <li>
                                     <a href="base_comp_images.html">Delete Hall</a>
