@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Faculty;
 use App\Hall;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -19,7 +20,7 @@ class HallController extends Controller
     {
         $halls = Hall::all();
 
-        return $halls;
+        return view('hall.hall_index',compact('halls'));
     }
 
     /**
@@ -29,13 +30,15 @@ class HallController extends Controller
      */
     public function create()
     {
-        return view('hall.create_hall');
+        $faculties=Faculty::all();
+        return view('hall.create_hall',compact('faculties'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @return Response
+     * @param CreateHallRequest $request
+     * @return hall page
      */
     public function store(CreateHallRequest $request)
     {

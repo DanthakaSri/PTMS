@@ -23,6 +23,7 @@ class CreateLecturersTable extends Migration
             $table->integer('type');
             $table->integer('faculty_id');
             $table->timestamps();
+
         });
     }
 

@@ -17,11 +17,13 @@ class CreateHallsTable extends Migration
         {
             $table->increments('id');
             $table->string('hall_id')->unique();
-            $table->integer('faculty_id');
+            $table->string('faculty_id');
             $table->string('name');
             $table->integer('capacity');
             $table->integer('type')->default(0);
             $table->timestamps();
+
+
         });
     }
 

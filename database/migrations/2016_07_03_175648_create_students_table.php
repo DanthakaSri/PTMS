@@ -19,6 +19,8 @@ class CreateStudentsTable extends Migration {
 			$table->string('student_id')->unique();
 			$table->string('course_id');
 			$table->timestamps();
+
+
 		});
 	}
 
