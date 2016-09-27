@@ -17,7 +17,7 @@ class CreateLecturersTable extends Migration
         {
             $table->increments('id');
             $table->integer('user_id');
-            $table->string('lecturer_id')->unique();
+            $table->integer('lecturer_id')->unique();
             $table->string('first_name');
             $table->string('last_name');
             $table->integer('type');

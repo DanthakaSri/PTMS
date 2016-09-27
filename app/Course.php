@@ -10,23 +10,23 @@ class Course extends Model
 
     public function faculty()
     {
-        return $this->belongsTo('App/Faculty');
+        return $this->belongsTo('\App\Faculty');
     }
 
 
     public function subject()
     {
-        return $this->hasMany('App/Subject');
+        return $this->hasMany('\App\Subject');
     }
 
     public function student()
     {
-        return $this->hasMany('App/Student');
+        return $this->hasMany('\App\Student');
     }
 
     public function timetable()
     {
-        return $this->hasMany('App/Timetable');
+        return $this->hasMany('\App\Timetable');
     }
 
 

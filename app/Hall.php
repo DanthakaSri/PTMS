@@ -9,7 +9,7 @@ class Hall extends Model
 
     public function faculty()
     {
-        return $this->belongsTo('App/Faculty');
+        return $this->belongsTo('\App\Faculty');
     }
 
 }

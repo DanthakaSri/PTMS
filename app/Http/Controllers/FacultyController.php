@@ -67,7 +67,9 @@ class FacultyController extends Controller
      */
     public function edit($id)
     {
-        //
+        $faculty=Faculty::findOrFail($id);
+
+        return view('faculty.edit_faculty',compact('faculty'));
     }
 
     /**
@@ -78,7 +80,11 @@ class FacultyController extends Controller
      */
     public function update($id)
     {
-        //
+        $faculty=Faculty::findOrFail($id);
+
+        $faculty->update(Request::all());
+
+        return redirect('/faculty');
     }
 
     /**

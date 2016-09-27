@@ -7,14 +7,14 @@
     <div class="col-sm-7">
         <h1 class="page-heading">
             Faculty
-            <small>Faculty</small>
+            <small>Manage Faculty</small>
         </h1>
     </div>
     <div class="col-sm-5 text-right hidden-md">
         <ol class="breadcrumb push-10-t">
             <li>Resource Management</li>
-            {{--<li>Faculty</li>--}}
-            <li><a class="link-effect" href="{{ url('/faculty/') }}">Faculty</a></li>
+            <li>Faculty</li>
+            <li><a class="link-effect" href="{{ url('/faculty/') }}">Manage Faculty</a></li>
         </ol>
     </div>
 @endsection
@@ -29,7 +29,7 @@
                 <ul class="block-options">
                     <li>
                         <a href="{{ url('/faculty/create') }}" type="button" data-toggle="tooltip"
-                                title="Add new faculty"><i class="si si-plus"></i></a>
+                                title="Add new faculty"><i class="si si-plus"></i> Add New Faculty</a>
                     </li>
                 </ul>
                 <h3 class="block-title">Faculty Details</h3>

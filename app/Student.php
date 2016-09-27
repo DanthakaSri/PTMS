@@ -11,22 +11,22 @@ class Student extends Model
 
     public function user()
     {
-        return $this->belongsTo('App/User');
+        return $this->belongsTo('App\User');
     }
 
     public function course()
     {
-        return $this->belongsTo('App/Course');
+        return $this->belongsTo('App\Course');
     }
 
     public function faculty()
     {
-        return $this->belongsTo('App/Faculty');
+        return $this->belongsTo('App\Faculty');
     }
 
     public function timetable()
     {
-        return $this->hasMany('App/Timetable');
+        return $this->hasMany('App\Timetable');
     }
 
 }

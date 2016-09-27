@@ -68,7 +68,11 @@ class HallController extends Controller
      */
     public function edit($id)
     {
-        //
+        $hall = Hall::findOrFail($id);
+        $faculties=Faculty::all();
+        return view('hall.edit_hall',compact('hall','faculties'));
+
+//        return $hall->faculty->name;
     }
 
     /**
@@ -79,7 +83,13 @@ class HallController extends Controller
      */
     public function update($id)
     {
-        //
+
+        $update=Requests::all();
+        $hall=Hall::findOrFail($id);
+
+        $hall->update($update);
+
+        return redirect('/hall');
     }
 
     /**

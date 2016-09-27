@@ -17,7 +17,7 @@ class CreateTimetablesTable extends Migration
         {
             $table->increments('id');
             $table->string('name');
-            $table->string('faculty_id');
+            $table->integer('faculty_id');
             $table->string('course_id');
             $table->timestamps();
         });

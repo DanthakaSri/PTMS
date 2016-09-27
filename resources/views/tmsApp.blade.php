@@ -76,34 +76,27 @@
                         </li>
 
                         <li class="nav-main-heading"><span class="sidebar-mini-hide">Resource Management</span></li>
-                        <li>
-                            <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-home"></i><span
-                                        class="sidebar-mini-hide">Hall</span></a>
-                            <ul>
-                                <li>
-                                    <a href="{{ url('/hall/create') }}">Add Hall</a>
-                                </li>
-                                <li>
-                                    <a href="#">Update Hall</a>
-                                </li>
-                                <li>
-                                    <a href="base_comp_images.html">Delete Hall</a>
-                                </li>
 
-                            </ul>
+                        <li @if(Request::is('/hall/')){{'class=open'}} @endif >
+                            <li>
+                                <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-home"></i><span
+                                            class="sidebar-mini-hide">Hall</span></a>
+                                <ul>
+                                    <li>
+                                        <a @if(Request::is('/hall/')){{'class=active'}} @endif href="{{ url('/hall/') }}">Manage
+                                            Halls</a>
+                                    </li>
+                                </ul>
+                            </li>
                         </li>
+
                         <li>
                             <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i
                                         class="si si-shield"></i><span class="sidebar-mini-hide">Faculty</span></a>
                             <ul>
                                 <li>
-                                    <a href="base_layouts_api.html">Add Faculty</a>
-                                </li>
-                                <li>
-                                    <a href="base_layouts_api.html">Update Faculty</a>
-                                </li>
-                                <li>
-                                    <a href="base_layouts_api.html">Delete Faculty</a>
+                                    <a @if(Request::is('/faculty')){{'class=active'}} @endif href="{{ url('/faculty') }}">Manage
+                                        Faculties</a>
                                 </li>
 
                             </ul>
@@ -260,9 +253,9 @@
         <!-- Page Header -->
         <div class="content bg-gray-lighter">
             <div class="row items-push">
-                       @section('title')
+                @section('title')
 
-                     @show
+                @show
             </div>
         </div>
         <!-- END Page Header -->

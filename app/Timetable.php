@@ -10,16 +10,16 @@ class Timetable extends Model
 
     public function faculty()
     {
-        return $this->belongsTo('App/Faculty');
+        return $this->belongsTo('App\Faculty');
     }
 
     public function student()
     {
-        return $this->belongsToMany('App/Student');
+        return $this->belongsToMany('\App\Student');
     }
 
     public function course()
     {
-        return $this->belongsTo('App/Course');
+        return $this->belongsTo('\App\Course');
     }
 }

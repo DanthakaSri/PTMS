@@ -9,22 +9,22 @@ class Faculty extends Model
 
     public function course()
     {
-        return $this->hasMany('App/Course');
+        return $this->hasMany('\App\Course');
     }
 
     public function hall()
     {
-        return $this->hasMany('App/Hall');
+        return $this->hasMany('\App\Hall');
     }
 
     public function lecturer()
     {
-        return $this->hasMany('App/Lecturer');
+        return $this->hasMany('\App\Lecturer');
     }
 
     public function timetable()
     {
-        return $this->hasMany('App/Timetable');
+        return $this->hasMany('\App\Timetable');
     }
 
 }

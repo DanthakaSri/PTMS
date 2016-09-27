@@ -4,18 +4,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class Lecturer extends Model {
 
-	protected $table="lectures";
+	protected $table="lecturers";
 
-    protected $fillable=[];
+    protected $fillable=['lecturer_id','first_name','last_name','faculty_id','type'];
 
     public function subject()
     {
-        return $this->hasMany('App/Subject');
+        return $this->hasMany('\App\Subject');
     }
 
     public function faculty()
     {
-        return $this->belongsToMany('App/Faculty');
+        return $this->belongsToMany('\App\Faculty');
     }
 
 }

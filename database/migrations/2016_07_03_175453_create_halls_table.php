@@ -16,7 +16,7 @@ class CreateHallsTable extends Migration
         Schema::create('halls', function (Blueprint $table)
         {
             $table->increments('id');
-            $table->string('hall_id')->unique();
+            $table->integer('hall_id')->unique();
             $table->string('faculty_id');
             $table->string('name');
             $table->integer('capacity');

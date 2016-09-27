@@ -34,12 +34,12 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
     public function student()
     {
-        return $this->hasMany('App/Student');
+        return $this->hasMany('\App\Student');
     }
 
     public function lecturer()
     {
-        return $this->hasMany('App/Lecturer');
+        return $this->hasMany('\App\Lecturer');
     }
 
 
