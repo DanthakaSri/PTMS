@@ -70,7 +70,10 @@ class LecturerController extends Controller
      */
     public function edit($id)
     {
-        //
+        $lecturer = Lecturer::findOrFail($id);
+        $faculties = Faculty::all();
+
+        return view('lecturer.edit_lecturer', compact('lecturer', 'faculties'));
     }
 
     /**

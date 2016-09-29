@@ -15,7 +15,7 @@ class Lecturer extends Model {
 
     public function faculty()
     {
-        return $this->belongsToMany('\App\Faculty');
+        return $this->belongsTo('\App\Faculty');
     }
 
 }

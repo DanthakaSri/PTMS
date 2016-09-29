@@ -90,7 +90,7 @@ var BaseCompCalendar = function() {
                 jQuery(this).remove();
             },
             events: [
-                {
+                /* {
                     title: 'Free day',
                     start: new Date($y, $m, 1),
                     allDay: true,
@@ -163,7 +163,7 @@ var BaseCompCalendar = function() {
                     allDay: true,
                     url: 'http://twitter.com/pixelcave',
                     color: '#32ccfe'
-                }
+                 }*/
             ]
         });
     };
