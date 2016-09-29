@@ -54,7 +54,7 @@ return [
 	|
 	*/
 
-	'from' => ['address' => null, 'name' => null],
+	'from' => ['address' => "pasinduworks92@gmail.com", 'name' => "Timetable Scheduler "],
 
 	/*
 	|--------------------------------------------------------------------------

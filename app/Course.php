@@ -5,18 +5,29 @@ use Illuminate\Database\Eloquent\Model;
 class Course extends Model
 {
 
-    protected $fillable = ['name', 'faculty_id', 'lecturer_id'];
+    protected $fillable = ['course_id', 'name', 'faculty_id', 'lecturer_id'];
 
 
     public function faculty()
     {
-        return $this->belongsTo('App/Faculty');
+        return $this->belongsTo('\App\Faculty');
     }
 
 
     public function subject()
     {
-        return $this->hasMany('App/Subject');
+        return $this->hasMany('\App\Subject');
     }
+
+    public function student()
+    {
+        return $this->hasMany('\App\Student');
+    }
+
+    public function timetable()
+    {
+        return $this->hasMany('\App\Timetable');
+    }
+
 
 }
