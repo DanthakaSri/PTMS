@@ -16,9 +16,15 @@ class CreateTimetablesTable extends Migration
         Schema::create('timetables', function (Blueprint $table)
         {
             $table->increments('id');
-            $table->string('name');
-            $table->integer('faculty_id');
-            $table->string('course_id');
+            $table->string('name')->nullable();
+            $table->integer('faculty_id')->nullable();
+            $table->string('course_id')->nullable();
+            $table->datetime('start');
+            $table->datetime('end')->nullable();
+            $table->boolean('allDay')->nullable();
+            $table->string('color')->nullable();
+            $table->mediumText('title')->nullable();
+            $table->string('type')->nullable();
             $table->timestamps();
         });
     }

@@ -140,16 +140,9 @@
                                         class="sidebar-mini-hide">Calendar</span></a>
                             <ul>
                                 <li>
-                                    <a class="active" href="base_pages_blank.html">Add Holidays</a>
+                                    <a class="active" href="{{ url('/holiday') }}">Manage Holidays & Events</a>
                                 </li>
-                                <li>
-                                    <a class="active" href="base_pages_blank.html">Delete Holidays</a>
-                                </li>
-                                <li>
-                                    <a class="active" href="base_pages_blank.html">Add Events</a>
-                                </li>
-                                <li>
-                                    <a class="active" href="base_pages_blank.html">Delete Events</a>
+
                                 </li>
                             </ul>
                         </li>

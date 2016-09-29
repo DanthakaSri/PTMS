@@ -6,7 +6,8 @@ class Timetable extends Model
 {
 
     protected $table = "timetables";
-    protected $fillable = ['faculty_id', 'course_id'];
+    protected $fillable = ['faculty_id', 'course_id', 'start', 'end', 'allDay', 'hall', 'color', 'title'];
+    protected $hidden = ['id'];
 
     public function faculty()
     {

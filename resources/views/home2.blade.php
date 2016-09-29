@@ -24,7 +24,53 @@
 
             <!-- Calendar and Events functionality (initialized in js/pages/base_comp_calendar.js), for more info and examples you can check out http://fullcalendar.io/ -->
     <div class="row items-push">
-        <div class="col-md-12col-md-offset-0 col-lg-12 col-lg-offset-0">
+        <div class="col-md-4 col-md-push-8 col-lg-2 col-lg-push-10">
+            <!-- Add Event Form -->
+            <form class="js-form-add-event push-30" action="{{ action('TimeTableManageController@create') }}" method="post"
+                  id="form-calendario">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <div class="input-group">
+                    <input class="js-add-event form-control" id="new-event" type="text" placeholder="Add event..">
+                    <div class="input-group-btn">
+                        <button class="btn btn-default" id="add-new-event" type="submit"><i class="fa fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <!-- END Add Event Form -->
+
+            <!-- Event List -->
+            <ul class="js-events list list-events" id="external-events">
+                <li class="external-event ui-draggable ui-draggable-handle" style="background-color: #fac5a5;">Work</li>
+                <li class="external-event ui-draggable ui-draggable-handle" style="background-color: #b5d0eb;">Relax
+                </li>
+                <li class="external-event ui-draggable ui-draggable-handle" style="background-color: #faeab9;">Gym</li>
+                <li class="external-event ui-draggable ui-draggable-handle" style="background-color: #fac5a5;">Secret
+                    Project
+                </li>
+                <li class="external-event ui-draggable ui-draggable-handle" style="background-color: #c8e2b3;">Cinema
+                </li>
+                <li class="external-event ui-draggable ui-draggable-handle" style="background-color: #b6d1ec;">Biking
+                </li>
+                <li class="external-event ui-draggable ui-draggable-handle" style="background-color: #c8e2b3;">Trip</li>
+                <li class="external-event ui-draggable ui-draggable-handle" style="background-color: #faeab9;">
+                    Swimming
+                </li>
+
+                <div class="checkbox">
+                    <label for="drop-remove">
+                        <input type="checkbox" id="drop-remove">
+                        Eliminar al asignar
+                    </label>
+                </div>
+            </ul>
+            <div class="text-center text-muted">
+                <small><em><i class="fa fa-arrows"></i> Drag and drop events on the calendar</em></small>
+                
+            </div>
+            <!-- END Event List -->
+        </div>
+        <div class="col-md-8 col-md-pull-4 col-lg-10 col-lg-pull-2">
             <!-- Calendar Container -->
             <div id="calendar" class="js-calendar"></div>
         </div>
@@ -97,8 +143,8 @@
 
                 events: {url: "allEvents"},
 
-                editable: false,
-                droppable: false, // this allows things to be dropped onto the calendar !!!
+                editable: true,
+                droppable: true, // this allows things to be dropped onto the calendar !!!
 
                 drop: function (date, allDay) {
                     // this function is called when something is dropped
@@ -131,7 +177,7 @@
                     var csrfToken = document.getElementsByName("_token")[0].value;
                     $.ajax({
                         url: 'createEvents',
-                        data: 'title=' + title + '&start=' + start + '&allday=' + allDay + '&background=' + back + '&type=null',
+                        data: 'title=' + title + '&start=' + start + '&allday=' + allDay + '&background=' + back+'&type=null',
                         type: "POST",
                         headers: {
                             "X-CSRF-TOKEN": csrfToken
@@ -181,7 +227,7 @@
                     }
                     var back = event.backgroundColor;
                     var allDay = event.allDay;
-                    var crsfToken = document.getElementsByName("_token")[0].value;
+                   var crsfToken = document.getElementsByName("_token")[0].value;
 
                     $.ajax({
                         url: 'updateEvents',
@@ -191,10 +237,10 @@
                             "X-CSRF-TOKEN": crsfToken
                         },
                         success: function (json) {
-                            console.log("Updated  eventdrop");
+                            console.log("Updated Successfully eventdrop");
                         },
                         error: function (json) {
-                            console.log("Error in  eventdrop");
+                            console.log("Error al actualizar eventdrop");
                         }
                     });
                 },
@@ -207,15 +253,15 @@
                     if (event.end) {
                         var end = event.end.format("HH:mm");
                     } else {
-                        var end = "No End time";
+                        var end = "No definido";
                     }
                     if (event.allDay) {
-                        var allDay = "Yes";
+                        var allDay = "Si";
                     } else {
                         var allDay = "No";
                     }
-                    var faculty_id = (event.faculty_id);
-                    var tooltip = '<div class="tooltipevent"  style="width:200px;height:auto; display: none; padding: 9px 14px;-webkit-background-clip: padding-box;background-clip: padding-box;border-radius: 6px;-webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);border: 1px solid rgba(0, 0, 0, 0.2);border: 1px solid #ccc;color:black;background:' + back + ';position:absolute;z-index:10001;">' + '<center>' + event.title + '</center>' + 'All Day Event: ' + allDay + '<br>' + 'Start time : ' + start + '<br>' + 'End time : ' + end + '<br>' + 'Faculty:' + faculty_id + '</div>';
+                    var faculty_id =(event.faculty_id);
+                    var tooltip = '<div class="tooltipevent"  style="width:200px;height:auto; display: none; padding: 9px 14px;-webkit-background-clip: padding-box;background-clip: padding-box;border-radius: 6px;-webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);border: 1px solid rgba(0, 0, 0, 0.2);border: 1px solid #ccc;color:black;background:' + back + ';position:absolute;z-index:10001;">' + '<center>' + event.title + '</center>' + 'Todo el dia: ' + allDay + '<br>' + 'Inicio: ' + start + '<br>' + 'Fin: ' + end +'<br>'+'faculty_id:'+faculty_id+ '</div>';
 
 
                     $("body").append(tooltip);
@@ -243,29 +289,24 @@
                 },
 
                 eventClick: function (event, jsEvent, view) {
-                    var crsfToken = document.getElementsByName("_token")[0].value;
-
-                    if (editable()) {
-                        var con = confirm("Are you sure to delete this event");
-
-                        if (con) {
-                            $.ajax({
-                                url: 'deleteEvents',
-                                data: 'id=' + event.id,
-                                headers: {
-                                    "X-CSRF-TOKEN": crsfToken
-                                },
-                                type: "POST",
-                                success: function () {
-                                    $('#calendar').fullCalendar('removeEvents', event._id);
-                                    console.log("Event Cancelled");
-                                }
-                            });
-                        } else {
-                            console.log("Cancelled");
-                        }
+                   var crsfToken = document.getElementsByName("_token")[0].value;
+                    var con = confirm("Esta seguro que desea eliminar el evento");
+                    if (con) {
+                        $.ajax({
+                            url: 'deleteEvents',
+                            data: 'id=' + event.id,
+                            headers: {
+                                "X-CSRF-TOKEN": crsfToken
+                            },
+                            type: "POST",
+                            success: function () {
+                                $('#calendar').fullCalendar('removeEvents', event._id);
+                                console.log("Event Cancelled");
+                            }
+                        });
+                    } else {
+                        console.log("Cancelled");
                     }
-
                 },
 
 
