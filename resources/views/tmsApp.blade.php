@@ -62,15 +62,8 @@
                                         class="sidebar-mini-hide">Lecturer</span></a>
                             <ul>
                                 <li>
-                                    <a href="{{ url('/student/create') }}">Add Lecturer</a>
+                                    <a href="{{ url('/lecturer/') }}">Manage Lecturer</a>
                                 </li>
-                                <li>
-                                    <a href="{{ url('/student/create') }}">Update Lecturer</a>
-                                </li>
-                                <li>
-                                    <a href="{{ url('/student/create') }}">Delete Lecturer</a>
-                                </li>
-
 
                             </ul>
                         </li>
@@ -107,6 +100,9 @@
                             <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-layers"></i><span
                                         class="sidebar-mini-hide">Course Timetable</span></a>
                             <ul>
+                                <li>
+                                    <a class="active" href="{{ url('/course') }}">Manage Courses</a>
+                                </li>
                                 <li>
                                     <a class="active" href="base_pages_blank.html">Schedule timetable</a>
                                 </li>

@@ -19,9 +19,10 @@ class CreateSubjectsTable extends Migration
             $table->integer('subject_id')->unique();
             $table->string('name');
             $table->integer('course_id');
-			$table->timestamps();
+            $table->integer('hours');
+            $table->timestamps();
 
-		});
+        });
     }
 
     /**
