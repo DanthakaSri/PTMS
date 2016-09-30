@@ -17,8 +17,9 @@ class CreateTimetablesTable extends Migration
         {
             $table->increments('id');
             $table->string('name')->nullable();
-            $table->integer('faculty_id')->nullable();
-            $table->string('course_id')->nullable();
+            $table->String('faculty_name')->nullable();
+            $table->string('course_name')->nullable();
+            $table->string('hall_name')->nullable();
             $table->datetime('start');
             $table->datetime('end')->nullable();
             $table->boolean('allDay')->nullable();
