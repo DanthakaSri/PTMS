@@ -3,6 +3,8 @@
 @section('header')
         <!-- Page JS Plugins CSS -->
 <link rel="stylesheet" href="{{ asset('/js/plugins/fullcalendar/fullcalendar.min.css') }}">
+<link rel="stylesheet" href="{{ asset('/js/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css') }}">
+
 @endsection
 
 @section('title')
@@ -18,11 +20,107 @@
             <li><a class="link-effect" href="{{ url('/home') }}">Home</a></li>
         </ol>
     </div>
-    @endsection
-    @section('content')
+@endsection
+@section('content')
 
+    <div class="row item-push">
+        <!-- Contact Forms -->
+        <div class="col-lg-6 col-lg-offset-3">
+            <!-- Bootstrap Contact -->
+            <div class="block block-themed">
+                <div class="block-header bg-info">
+                    <ul class="block-options">
+                        <li>
+                            <button type="button" data-toggle="block-option" data-action="refresh_toggle"
+                                    data-action-mode="demo"><i class="si si-refresh"></i></button>
+                        </li>
+                        <li>
+                            <button type="button" data-toggle="block-option" data-action="content_toggle"></button>
+                        </li>
+                    </ul>
+                    <h3 class="block-title">Timetable Details</h3>
+                </div>
+                <div class="block-content">
 
-            <!-- Calendar and Events functionality (initialized in js/pages/base_comp_calendar.js), for more info and examples you can check out http://fullcalendar.io/ -->
+                    @if (count($errors) > 0)
+                        <div class="alert alert-danger alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                            <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
+                    <form class="form-horizontal push-5-t" action="{{ url('/timetable') }}" method="POST">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+                        <div class="form-group">
+                            <label class="col-md-12" for="contact1-email">Timetable Name</label>
+                            <div class="col-md-12">
+                                <input class="form-control" type="text" id="contact1-email" name="name_1"
+                                       value="master" placeholder="Enter Timetable Name" disabled>
+                                <input class="form-control" type="hidden" id="contact1-email" name="name"
+                                       value="master" placeholder="Enter Timetable Name">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-12" for="contact1-subject">Subject</label>
+                            <div class="col-md-12">
+                                <select class="form-control" id="contact1-subject" name="subject_id" size="1">
+
+                                    @foreach($subjects as $subject)
+                                        <option value="{{ $subject->subject_id }}">{{ $subject->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-12 " for="example-datepicker1">Start Date</label>
+                            <div class="col-md-12">
+                                <input class="js-datepicker form-control" type="text" id="example-datepicker1"
+                                       name="start" data-date-format="yy/mm/dd" placeholder="yy/mm/dd">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-12 " for="example-datepicker1">End Date</label>
+                            <div class="col-md-12">
+                                <input class="js-datepicker form-control" type="text" id="example-datepicker1"
+                                       name="end" data-date-format="yy/mm/dd" placeholder="yy/mm/dd">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-12" for="contact1-subject">Select Hall</label>
+                            <div class="col-md-12">
+                                <select class="form-control" id="contact1-subject" name="hall" size="1">
+
+                                    @foreach($halls as $hall)
+                                        <option value="{{ $hall->name }}">{{ $hall->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <button class="btn btn-sm btn-success" type="submit"><i class="fa fa-plus push-5-r"></i>
+                                    Add
+                                    to Timetable
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- END Bootstrap Contact -->
+        </div>
+
+    </div>
+    <!-- Calendar and Events functionality (initialized in js/pages/base_comp_calendar.js), for more info and examples you can check out http://fullcalendar.io/ -->
     <div class="row items-push">
         <div class="col-md-12col-md-offset-0 col-lg-12 col-lg-offset-0">
             <!-- Calendar Container -->
@@ -40,6 +138,8 @@
     <script src="{{ asset('/js/plugins/fullcalendar/gcal.min.js') }}"></script>
 
     <!-- Page JS Code -->
+    <script src="{{ asset('/js/plugins/bootstrap-datepicker/bootstrap-datepicker3.min.css') }}"></script>
+
     {{--<script src="{{ asset('/js/pages/base_comp_calendar.js') }}"></script>--}}
 
     <script>
@@ -95,10 +195,10 @@
                     listWeek: 'List Week'
                 },
 
-                events: {url: "allEvents"},
+                events: {url: "allTimetables"},
 
-                editable: false,
-                droppable: false, // this allows things to be dropped onto the calendar !!!
+                editable: true,
+                droppable: true, // this allows things to be dropped onto the calendar !!!
 
                 drop: function (date, allDay) {
                     // this function is called when something is dropped
@@ -310,6 +410,5 @@
             });
         });
     </script>
-
 
 @endsection

@@ -17,7 +17,8 @@ Route::get('/', 'HomeController@index');
 //Timetable Calendar
 Route::get('allEvents{id?}', 'TimeTableManageController@index');
 Route::get('allHolidays{id?}', 'TimeTableManageController@holidayCalendar');
-//Route::post('guardaEventos', array('as' => 'guardaEventos','uses' => 'CalendarController@create'));
+Route::get('allTimetables{id?}', 'TimeTableManageController@index');
+
 Route::post('createEvents', 'TimeTableManageController@create');
 Route::post('updateEvents', 'TimeTableManageController@update');
 Route::post('deleteEvents', 'TimeTableManageController@delete');
@@ -26,6 +27,7 @@ Route::post('deleteEvents', 'TimeTableManageController@delete');
 
 Route::group(['middleware' => 'auth'], function ()
 {
+    Route::get('/subject/create/{id}', 'SubjectController@create');
     Route::get('home', 'HomeController@index');
     Route::get('holiday', 'TimetableManageController@holiday');
     Route::resource('user', 'UserController');
